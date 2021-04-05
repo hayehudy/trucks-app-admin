@@ -1,7 +1,12 @@
 import "./users.css";
+import React, { useState, useEffect } from "react";
 
-function Users() {
-  return <div className="users"></div>;
-}
+const Location = () => {
+  return (
+    <div className="users">
+      <h2>Location</h2>
+    </div>
+  );
+};
 
-export default Users;
+export default Location;
