@@ -1,6 +1,6 @@
 import "./sidebar.css";
 import "date-fns";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
@@ -14,9 +14,25 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
 const Sidebar = (props) => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  // const [drivers, setDrivers] = props;
+  const month = new Date().getMonth() + 1;
+  const date = new Date().getDate();
+  // const [selectedDate, setSelectedDate] = useState(new Date());
+  const { selectedDate, setSelectedDate } = props;
   const { drivers, setDrivers } = props;
+
+  // useEffect(async () => {
+  //   var dates = selectedDate;
+  //   var abc =
+  //     (await dates.date) < 10
+  //       ? "0" + date
+  //       : date +
+  //         "/" +
+  //         (month < 10 ? "0" + month : month) +
+  //         "/" +
+  //         new Date().getFullYear().toString();
+  //   console.log(dates);
+  //   console.log(abc);
+  // }, [selectedDate]);
 
   const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -30,8 +46,12 @@ const Sidebar = (props) => {
 
   const classes = useStyles();
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
+  // const date = `    ${date < 10 ? "0" + date : date}/${
+  //   month < 10 ? "0" + month : month
+  // }/${new Date().getFullYear().toString()}  `
+
+  const handleDateChange = (e) => {
+    setSelectedDate(e);
   };
 
   const handleChange = (event) => {
@@ -49,6 +69,7 @@ const Sidebar = (props) => {
             format="MM/dd/yyyy"
             value={selectedDate}
             onChange={handleDateChange}
+            mask="MM/dd/yyyy"
             KeyboardButtonProps={{
               "aria-label": "change date",
             }}
@@ -66,7 +87,7 @@ const Sidebar = (props) => {
             onChange={handleChange}
           >
             <MenuItem value={"Josef"}>Josef</MenuItem>
-            <MenuItem value={"Moshe"}>Moshe</MenuItem>
+            <MenuItem value={"Moshe"}>moshe</MenuItem>
             <MenuItem value={"Avi"}>Avi</MenuItem>
           </Select>
         </FormControl>

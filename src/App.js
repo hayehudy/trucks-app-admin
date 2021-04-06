@@ -12,7 +12,7 @@ function App() {
     {
       ID: 1,
       Driver: "Josef",
-      Date: "01/01/2021",
+      Date: "04/05/2021",
       Constractor: "bb",
       Customer: "momo",
       Origin: "aaa",
@@ -28,7 +28,7 @@ function App() {
     {
       ID: 2,
       Driver: "Moshe",
-      Date: "01/01/2021",
+      Date: "04/06/2021",
       Constractor: "bb",
       Customer: "momo",
       Origin: "aaa",
@@ -44,7 +44,7 @@ function App() {
     {
       ID: 3,
       Driver: "Avi",
-      Date: "01/01/2021",
+      Date: "04/05/2021",
       Constractor: "bb",
       Customer: "momo",
       Origin: "aaa",
@@ -59,8 +59,8 @@ function App() {
     },
     {
       ID: 4,
-      Driver: "Josef",
-      Date: "01/01/2021",
+      Driver: "josef",
+      Date: "04/01/2021",
       Constractor: "bb",
       Customer: "momo",
       Origin: "aaa",
@@ -75,8 +75,8 @@ function App() {
     },
     {
       ID: 5,
-      Driver: "Moshe",
-      Date: "01/01/2021",
+      Driver: "moshe",
+      Date: "04/04/2021",
       Constractor: "bb",
       Customer: "momo",
       Origin: "aaa",
@@ -91,8 +91,8 @@ function App() {
     },
     {
       ID: 6,
-      Driver: "Avi",
-      Date: "01/01/2021",
+      Driver: "avi",
+      Date: "04/06/2021",
       Constractor: "bb",
       Customer: "momo",
       Origin: "aaa",

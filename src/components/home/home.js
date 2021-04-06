@@ -20,10 +20,33 @@ import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 
 function Home(props) {
-  const students = props.students;
+  const loadsStudents = props.students;
   const loads = props.loads;
   const [drivers, setDrivers] = useState("");
-  console.log(drivers);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [students, setStudents] = useState(loadsStudents);
+
+  console.log(selectedDate);
+
+  useEffect(async () => {
+    var dates = selectedDate;
+    const month = dates.getMonth() + 1;
+    const date = dates.getDate();
+    const year = dates.getFullYear().toString();
+
+    var filterDate =
+      (month < 10 ? "0" + month : month) +
+      "/" +
+      (date < 10 ? "0" + date : date) +
+      "/" +
+      year;
+    console.log(dates);
+    console.log(filterDate);
+    setStudents(
+      loadsStudents.filter((product) => product.Date.includes(filterDate))
+    );
+  }, [selectedDate]);
+
   // useEffect(() => {
   //   axios.get("http://127.0.0.1:8000/details/").then((res) => {
   //     console.log(res.data);
@@ -33,7 +56,7 @@ function Home(props) {
   // }, []);
 
   function renderTableHeader() {
-    let header = Object.keys(students[0]);
+    let header = Object.keys(loadsStudents[0]);
     return header.map((key, index) => {
       return (
         <th id="stylthheader" key={index}>
@@ -69,6 +92,14 @@ function Home(props) {
       fontSize: 14,
     },
   }))(TableRow);
+
+  useEffect(() => {
+    setStudents(
+      loadsStudents.filter((driver) =>
+        driver.Driver.toLowerCase().includes(drivers.toLowerCase())
+      )
+    );
+  }, [drivers]);
 
   function RenderTableData(props) {
     const { row } = props;
@@ -151,7 +182,12 @@ function Home(props) {
 
   return (
     <div className="home">
-      <Sidebar drivers={drivers} setDrivers={setDrivers} />
+      <Sidebar
+        drivers={drivers}
+        setDrivers={setDrivers}
+        setSelectedDate={setSelectedDate}
+        selectedDate={selectedDate}
+      />
       <h1>Admin Table</h1>
       <TableContainer component={Paper}>
         <Table aria-label="collapsible table">
