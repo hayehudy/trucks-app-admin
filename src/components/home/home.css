@@ -1,9 +1,29 @@
 .home {
-  padding: 0% 6% 3% 5%;
-  width: 50%;
-  margin: 0 auto;
+  margin: 60px auto;
+  left: 300px;
+  position: absolute;
+  text-align: center;
 }
+
 td,
 th {
-  border: 1px solid black;
+  border: 1px solid rgb(0, 0, 0);
+  padding: 5px 10px;
+}
+#stylthheader {
+  border-right: 1px solid rgb(255, 255, 255);
+}
+
+tr:nth-child(2n + 1) td {
+  background-color: rgb(255, 255, 255);
+}
+
+tr:nth-child(2n + 2) td {
+  background-color: rgb(204, 204, 204);
+}
+
+.students {
+  margin: 0px auto;
+  text-align: center;
+  border-collapse: collapse;
 }
