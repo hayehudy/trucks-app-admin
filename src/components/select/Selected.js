@@ -85,10 +85,16 @@ const Selected=(props)=>{
   const setUserNames=props.setUserNames||null;
   const [personName, setPersonName] = useState([]);
   const [inputValue,setInputValue]=useState("");
+  const [updateName,setUpdateName]=useState("");
+  const [updateMail,setUpdateMail]=useState("");
   const [toAdd,setToAdd]=useState(false);
+  const [toUpdate,setToUpdate]=useState(false);
   const [removed,setRemoved]=useState(false);
+  const [noChoose,setNoChoose]=useState(false);
+  const [noItems,setNoItems]=useState(false);
 
   const handleChange = (event) => {
+    setNoChoose(false)
     setPersonName(event.target.value);
     setRemoved(false)
   };
@@ -99,17 +105,30 @@ const Selected=(props)=>{
       if (!test){
         theOptions.push(inputValue);
         setOptions(theOptions)} 
-      setToAdd(false)
+      setToAdd(false);
+      setNoItems(false)
     }
 
   const remove=()=>{
-      if (title!=="Users"){
+      if (personName.length<1){setNoChoose(true)}
+      if (options.length<1){setNoItems(true)}
+      else{
       let theOptions=options.filter((e)=>!personName.includes(e));
       setOptions(theOptions);
       setPersonName([]);
       setRemoved(true)}
-  }
+    }
+  
 
+  const update=()=>{
+      let theOptions=options;
+      let index=theOptions.indexOf(personName[0]);
+      theOptions[index].name=updateName;    
+      theOptions[index].Email=updateMail;
+      setOptions(theOptions);   
+      setToUpdate(false);
+      setPersonName([]); 
+  }
   
   return (
     <div style={{flex:1}}>      
@@ -125,29 +144,43 @@ const Selected=(props)=>{
           renderValue={(selected) => selected=!removed?(personName.length+" items selected"):[]}
           MenuProps={MenuProps}
         >
-          {options.map((name) => (
-            <MenuItem key={name} value={name}>
+          {options.map((name,index) => (
+            <MenuItem key={index} value={name}>
               <Checkbox checked={personName.indexOf(name) > -1} />
-              <ListItemText primary={name} />
+              <ListItemText primary={title!=="Users"?name:"name: "+name.name+", Email: "+name.Email} />
             </MenuItem>
           ))}
         </Select>
       </FormControl>
       <div style={{marginRight:"10%"}}>
+      {!toAdd&&<div><button onClick={remove} style={{color:"green"}}>remove</button></div>}
       {!toAdd&&title!=="Users"&&
-      <div>
-      <button onClick={()=>setToAdd(true)} style={{color:"green"}}>add item</button>
-      <button onClick={remove} style={{color:"green"}}>remove</button>
-      </div>}
+      (<div>
+      <button onClick={()=>{setToAdd(true); setNoItems(false); setNoChoose(false);setPersonName([])}} style={{color:"green"}}>add item</button></div>)}      
+      {noChoose&&!noItems&&<div style={{color:"red"}}>Choose an item</div>}
+      {noItems&&<div style={{color:"red"}}>No items</div>}
+      {title==="Users"&&(<div><button onClick={()=>setToUpdate(true)} style={{color:"green"}}>update</button></div>)}
       {toAdd&&
         <div>
-        {console.log("mama?")}
         <input onChange={e=>setInputValue(e.target.value)} style={{borderTop:"none", borderRight:"none", borderLeft:"none", borderWidth:"0.5px", height:"20px", width:"100px"}}></input>
         <div style={{display:"flex", flexDirection:"row", justifyContent:"space-between"}}>
         <button style={{borderRadius:"20%", margin:"2%"}} onClick={add}>add</button>
         <button style={{borderRadius:"20%", margin:"2%"}} onClick={()=>setToAdd(false)}>cancel</button>
         </div>
         </div>}
+        {toUpdate&&
+        (personName.length>1?<div style={{color:"red"}}>choose only one item</div>:
+        noItems?<div style={{color:"red"}}>No items</div>:
+        personName.length<1?<div style={{color:"red"}}>choose an item</div>:        
+        <div>
+        <input onChange={e=>setUpdateName(e.target.value)} style={{borderTop:"none", borderRight:"none", borderLeft:"none", borderWidth:"0.5px", height:"20px", width:"100px"}} placeholder={personName[0].name}></input>
+        <input onChange={e=>setUpdateMail(e.target.value)} style={{borderTop:"none", borderRight:"none", borderLeft:"none", borderWidth:"0.5px", height:"20px", width:"100px"}} placeholder={personName[0].Email}></input>
+        <div style={{display:"flex", flexDirection:"row", justifyContent:"space-between"}}>
+        <button style={{borderRadius:"20%", margin:"2%"}} onClick={update}>update</button>
+        <button style={{borderRadius:"20%", margin:"2%"}} onClick={()=>setToUpdate(false)}>cancel</button>
+        </div>
+        </div>)
+        }
       </div>
     </div>
   );
@@ -155,3 +188,5 @@ const Selected=(props)=>{
 
 export default Selected;
 
+{/* <button onClick={remove}>remove</button>
+const remove=()=>{return <div>choose an item</div>} */}
