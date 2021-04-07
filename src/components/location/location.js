@@ -81,7 +81,7 @@ const Location = () => {
         <GoogleMapReact
           bootstrapURLKeys={{
             key: "AIzaSyDruzVgnPzX3hODNpHFohGBhvj-KO-nFQk",
-            // language: "en",
+            language: "en",
           }}
           center={pointsmap.length > 1 ? pointsmap[0] : pointsmap}
           defaultZoom={17}

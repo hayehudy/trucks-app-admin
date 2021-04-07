@@ -26,13 +26,10 @@ function Home(props) {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [students, setStudents] = useState(loadsStudents);
 
-  console.log(selectedDate);
-
   useEffect(async () => {
-    var dates = selectedDate;
-    const month = dates.getMonth() + 1;
-    const date = dates.getDate();
-    const year = dates.getFullYear().toString();
+    const month = selectedDate.getMonth() + 1;
+    const date = selectedDate.getDate();
+    const year = selectedDate.getFullYear().toString();
 
     var filterDate =
       (month < 10 ? "0" + month : month) +
@@ -40,12 +37,19 @@ function Home(props) {
       (date < 10 ? "0" + date : date) +
       "/" +
       year;
-    console.log(dates);
-    console.log(filterDate);
+
     setStudents(
-      loadsStudents.filter((product) => product.Date.includes(filterDate))
+      loadsStudents.filter((loaddate) => loaddate.Date.includes(filterDate))
     );
   }, [selectedDate]);
+
+  useEffect(() => {
+    setStudents(
+      loadsStudents.filter((driver) =>
+        driver.Driver.toLowerCase().includes(drivers.toLowerCase())
+      )
+    );
+  }, [drivers]);
 
   // useEffect(() => {
   //   axios.get("http://127.0.0.1:8000/details/").then((res) => {
@@ -55,15 +59,41 @@ function Home(props) {
   //   });
   // }, []);
 
+  const useStyles = makeStyles({
+    root: {
+      width: "100%",
+    },
+    container: {
+      maxHeight: 600,
+    },
+  });
+
+  const classes = useStyles();
+
+  let header = [
+    "Job Number",
+    "Driver",
+    "Date",
+    "Constractor",
+    "Customer",
+    "Origin",
+    "Destination",
+    "City",
+    "Start Time",
+    "End Time",
+    "Works Hours",
+    "Loads",
+    "Weight",
+    "Locations",
+  ];
+
   function renderTableHeader() {
-    let header = Object.keys(loadsStudents[0]);
-    return header.map((key, index) => {
-      return (
-        <th id="stylthheader" key={index}>
-          {key}
-        </th>
-      );
-    });
+    // let header = Object.keys(loadsStudents[0]);
+    return header.map((key, index) => (
+      <TableCell component="th" key={index}>
+        {key}
+      </TableCell>
+    ));
   }
 
   const useRowStyles = makeStyles({
@@ -93,24 +123,15 @@ function Home(props) {
     },
   }))(TableRow);
 
-  useEffect(() => {
-    setStudents(
-      loadsStudents.filter((driver) =>
-        driver.Driver.toLowerCase().includes(drivers.toLowerCase())
-      )
-    );
-  }, [drivers]);
-
   function RenderTableData(props) {
     const { row } = props;
     const [openlocation, setOpenlocation] = useState(false);
     const [openload, setOpenload] = useState(false);
     const classes = useRowStyles();
-
     return (
       <React.Fragment>
-        <StyledTableRow className={classes.root} component="th" scope="row">
-          <TableCell component="th" scope="row" align="center">
+        <StyledTableRow className={classes.root} component="table" scope="row">
+          <TableCell component="table" scope="row" align="center">
             {row.ID}
           </TableCell>
           <TableCell align="center">{row.Driver}</TableCell>
@@ -187,10 +208,13 @@ function Home(props) {
         setDrivers={setDrivers}
         setSelectedDate={setSelectedDate}
         selectedDate={selectedDate}
+        loadsStudents={loadsStudents}
+        setStudents={setStudents}
       />
       <h1>Admin Table</h1>
-      <TableContainer component={Paper}>
-        <Table aria-label="collapsible table">
+
+      <TableContainer component={Paper} className={classes.container}>
+        <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <StyledTableHeader>{renderTableHeader()}</StyledTableHeader>
           </TableHead>

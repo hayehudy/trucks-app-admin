@@ -4,26 +4,18 @@
   position: absolute;
   text-align: center;
 }
-
+table {
+  border-collapse: collapse !important;
+}
+table,
 td,
 th {
-  border: 1px solid rgb(0, 0, 0);
-  padding: 5px 10px;
-}
-#stylthheader {
-  border-right: 1px solid rgb(255, 255, 255);
+  border: 1px solid black;
 }
 
-tr:nth-child(2n + 1) td {
-  background-color: rgb(255, 255, 255);
-}
-
-tr:nth-child(2n + 2) td {
-  background-color: rgb(204, 204, 204);
-}
-
-.students {
-  margin: 0px auto;
-  text-align: center;
-  border-collapse: collapse;
+.MuiTableCell-stickyHeader {
+  background-color: rgb(124, 124, 124) !important;
+  color: white !important;
+  text-align: center !important;
+  font-weight: 700 !important;
 }

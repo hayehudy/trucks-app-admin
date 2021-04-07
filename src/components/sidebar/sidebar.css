@@ -7,7 +7,7 @@
   align-items: center;
   position: fixed;
   background-color: rgb(228, 228, 228);
-  z-index: 2;
+  z-index: 5;
 }
 
 .sidebar .datepicker {

@@ -12,27 +12,17 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import Button from "@material-ui/core/Button";
 
 const Sidebar = (props) => {
-  const month = new Date().getMonth() + 1;
-  const date = new Date().getDate();
-  // const [selectedDate, setSelectedDate] = useState(new Date());
-  const { selectedDate, setSelectedDate } = props;
-  const { drivers, setDrivers } = props;
-
-  // useEffect(async () => {
-  //   var dates = selectedDate;
-  //   var abc =
-  //     (await dates.date) < 10
-  //       ? "0" + date
-  //       : date +
-  //         "/" +
-  //         (month < 10 ? "0" + month : month) +
-  //         "/" +
-  //         new Date().getFullYear().toString();
-  //   console.log(dates);
-  //   console.log(abc);
-  // }, [selectedDate]);
+  const {
+    selectedDate,
+    setSelectedDate,
+    loadsStudents,
+    setStudents,
+    drivers,
+    setDrivers,
+  } = props;
 
   const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -42,13 +32,36 @@ const Sidebar = (props) => {
     selectEmpty: {
       marginTop: theme.spacing(2),
     },
+    root: {
+      "& > *": {
+        margin: theme.spacing(1),
+        minWidth: 150,
+        marginTop: 100,
+      },
+    },
   }));
+  // const useStyles = makeStyles((theme) => ({
+  //   },
+  // }));
 
   const classes = useStyles();
-
-  // const date = `    ${date < 10 ? "0" + date : date}/${
-  //   month < 10 ? "0" + month : month
-  // }/${new Date().getFullYear().toString()}  `
+  function ContainedButtons() {
+    // const classes = useStyles();
+    return (
+      <div className={classes.root}>
+        <Button
+          variant="contained"
+          onClick={async () => {
+            await setDrivers("");
+            // setSelectedDate(new Date());
+            setStudents(loadsStudents);
+          }}
+        >
+          Show all
+        </Button>
+      </div>
+    );
+  }
 
   const handleDateChange = (e) => {
     setSelectedDate(e);
@@ -92,6 +105,7 @@ const Sidebar = (props) => {
           </Select>
         </FormControl>
       </div>
+      <ContainedButtons />
     </div>
   );
 };
