@@ -58,7 +58,7 @@ const Selected = (props) => {
     let test = theOptions.find((e) => e === inputValue);
     if (!test) {
       theOptions.push(inputValue);
-      setOptions([theOptions]);
+      setOptions(theOptions);
       setPersonName([]);
     }
   };
