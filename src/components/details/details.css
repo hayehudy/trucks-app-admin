@@ -12,6 +12,7 @@
   position: relative;
   text-align: center;
   padding-top: 20px;
+  /* margin-top: 80px; */
 }
 .row2 {
   text-align: center;
@@ -21,4 +22,12 @@
   padding-top: 20px;
   min-height: 100vh;
   padding-bottom: 100px;
+  /* margin-top: 80px; */
+}
+.head {
+  height: 60px;
+  position: absolute;
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
 }

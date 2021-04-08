@@ -4,14 +4,14 @@
   position: absolute;
   text-align: center;
 }
-.home table {
+/* .home table {
   border-collapse: collapse !important;
 }
 .home table,
 td,
 th {
-  border: 1px solid black;
-}
+  border: 1px solid black !important;
+} */
 
 .home .MuiTableCell-stickyHeader {
   background-color: rgb(124, 124, 124) !important;

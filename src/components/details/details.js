@@ -27,16 +27,10 @@ const Details = () => {
 
   return (
     // <div className="details" style={{display:"inline-block",width:"100%"}}>
-    <div
-      className="details"
-      // style={{
-      //   display: "flex",
-      //   flexDirection: "row",
-      //   justifyContent: "space-between",
-      //   alignItems: "center",
-      //   width: "100%",
-      // }}
-    >
+    <div className="details">
+      {/* <div className="head">
+        <h1>Details</h1>
+      </div> */}
       <div className="row1">
         <h3>Trucks Types</h3>
         <Selected

@@ -40,8 +40,11 @@ const Selected = (props) => {
 
   const handleChange = (event) => {
     setNoChoose(false);
-    setPersonName(event.target.value);
+    // setPersonName(event.target.value);
     setRemoved(false);
+    let theNames = personName;
+    theNames.push(event.target.value);
+    setPersonName(theNames);
   };
 
   const add = async () => {
@@ -99,13 +102,7 @@ const Selected = (props) => {
               value={name}
               onChange={handleChange}
             />
-            <ListItemText
-              primary={
-                title !== "Users"
-                  ? name
-                  : "name: " + name.name + ", Email: " + name.Email
-              }
-            />
+            <ListItemText primary={name} />
           </MenuItem>
         ))}
       </FormControl>

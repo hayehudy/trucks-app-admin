@@ -99,7 +99,7 @@ function Home(props) {
   const useRowStyles = makeStyles({
     root: {
       "& > *": {
-        borderBottom: "unset",
+        height: 50,
       },
     },
   });
