@@ -40,11 +40,8 @@ const Selected = (props) => {
 
   const handleChange = (event) => {
     setNoChoose(false);
-    // setPersonName(event.target.value);
+    setPersonName((names) => [...names, event.target.value]);
     setRemoved(false);
-    let theNames = personName;
-    theNames.push(event.target.value);
-    setPersonName(theNames);
   };
 
   const add = async () => {

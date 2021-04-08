@@ -166,8 +166,7 @@ const Users = () => {
     );
   }
 
-  function AddUser(props) {
-    let usernames = UserNames;
+  function AddUser() {
     const [inputValue, setInputValue] = useState({
       id: "",
       name: "",
@@ -179,9 +178,10 @@ const Users = () => {
       for (var i = 0; i < UserNames.length; i++) {
         var max = Math.max(UserNames[i].id);
       }
-      usernames.push({ ...inputValue, id: (max + 1).toString() });
-      setUserNames(usernames);
-      console.log(UserNames);
+      setUserNames((userNames) => [
+        ...userNames,
+        { ...inputValue, id: (max + 1).toString() },
+      ]);
     };
 
     return (

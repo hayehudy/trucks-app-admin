@@ -210,21 +210,23 @@ function Home(props) {
         loadsStudents={loadsStudents}
         setStudents={setStudents}
       />
-      <h1>Admin Table</h1>
+      <div className="divtable">
+        <h1>Admin Table</h1>
 
-      <TableContainer component={Paper} className={classes.container}>
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-            <StyledTableHeader>{renderTableHeader()}</StyledTableHeader>
-          </TableHead>
+        <TableContainer component={Paper} className={classes.container}>
+          <Table stickyHeader aria-label="sticky table">
+            <TableHead>
+              <StyledTableHeader>{renderTableHeader()}</StyledTableHeader>
+            </TableHead>
 
-          <TableBody>
-            {students.map((row) => (
-              <RenderTableData key={row.ID} row={row} />
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            <TableBody>
+              {students.map((row) => (
+                <RenderTableData key={row.ID} row={row} />
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
     </div>
   );
 }
