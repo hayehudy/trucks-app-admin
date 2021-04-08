@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
@@ -37,22 +37,23 @@ const Selected = (props) => {
   const [removed, setRemoved] = useState(false);
   const [noChoose, setNoChoose] = useState(false);
   const [noItems, setNoItems] = useState(false);
-
+  
   const handleChange = (event) => {
     setNoChoose(false);
     // setPersonName(event.target.value);
     setRemoved(false);
-    let theNames = personName;
-    theNames.push(event.target.value);
-    setPersonName(theNames);
+    setPersonName(names => [...names,event.target.value ]);
+    // let theNames = personName;
+    // theNames.push(event.target.value);
+    // setPersonName(theNames);
   };
 
   const add = async () => {
     let theOptions = options;
     let test = theOptions.find((e) => e === inputValue);
     if (!test) {
-      await theOptions.push(inputValue);
-      setOptions(theOptions);
+      theOptions.push(inputValue);
+      setOptions([theOptions]);
       setPersonName([]);
     }
   };
@@ -94,9 +95,9 @@ const Selected = (props) => {
 
       <FormControl className={classes.formControl}>
         {options.map((name, index) => (
-          <MenuItem>
+          <MenuItem key={name.uniqueId}>
             <Checkbox
-              key={index}
+              
               checked={personName.indexOf(name) > -1}
               multiple
               value={name}
