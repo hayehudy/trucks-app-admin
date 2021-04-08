@@ -4,16 +4,16 @@
   position: absolute;
   text-align: center;
 }
-table {
+.home table {
   border-collapse: collapse !important;
 }
-table,
+.home table,
 td,
 th {
   border: 1px solid black;
 }
 
-.MuiTableCell-stickyHeader {
+.home .MuiTableCell-stickyHeader {
   background-color: rgb(124, 124, 124) !important;
   color: white !important;
   text-align: center !important;

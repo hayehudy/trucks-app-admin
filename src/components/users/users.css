@@ -1,5 +1,17 @@
 .users {
   margin: 60px auto;
-
   position: absolute;
+}
+
+.users table,
+td,
+th {
+  border: 0px solid black;
+}
+
+.users .MuiTableCell-stickyHeader {
+  background-color: rgb(124, 124, 124) !important;
+  color: white !important;
+  text-align: center !important;
+  font-weight: 700 !important;
 }

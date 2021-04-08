@@ -6,7 +6,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Checkbox from "@material-ui/core/Checkbox";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import "./selectDetails.css";
+import "./‏‏selectUsers.css";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import { grey } from "@material-ui/core/colors";
 const useStyles = makeStyles((theme) => ({
@@ -148,7 +148,6 @@ const Selected = (props) => {
         )}
 
         {noItems && <div style={{ color: "red" }}>No items</div>}
-
         {title === "Users" && (
           <div>
             <button
