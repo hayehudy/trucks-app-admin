@@ -49,7 +49,9 @@ const Location = () => {
       <div>{icon}</div>
     </div>
   );
-
+  {
+    console.log(pointsmap.lat);
+  }
   return (
     <div className="location">
       <h2>Location</h2>
@@ -62,7 +64,7 @@ const Location = () => {
             id="select"
             value={pointsmap}
             onChange={handleChange}
-            // displayEmpty
+            displayEmpty
           >
             <MenuItem value={points}>View all locations</MenuItem>
             {points.map((point) => (

@@ -33,19 +33,10 @@ const Users = () => {
   ]);
   const [remove, setRemove] = useState({});
   const [toAdd, setToAdd] = useState(false);
-  const [checked, setChecked] = useState();
   const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
 
   const handleClose = () => {
     setOpen(false);
-  };
-
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
   };
 
   const useStyles = makeStyles((theme) => ({
@@ -170,9 +161,6 @@ const Users = () => {
                 setOpen(true);
                 setRemove(user);
               }}
-              // onClick={() => {
-              //   setUserNames(UserNames.filter((e) => user.id !== e.id));
-              // }}
             />
           </TableCell>
           <TableCell align="center">{user.name}</TableCell>
@@ -182,15 +170,19 @@ const Users = () => {
       </React.Fragment>
     );
   }
+
   function AddUser(props) {
+    let usernames = UserNames;
     const [inputValue, setInputValue] = useState({
+      id: "",
       name: "",
       numuser: "",
       password: "",
     });
+
     const adduser = async () => {
-      UserNames.push(inputValue);
-      await setUserNames(UserNames);
+      usernames.push({ ...inputValue, id: (UserNames.length + 1).toString() });
+      await setUserNames(usernames);
       console.log(UserNames);
     };
 
@@ -201,7 +193,11 @@ const Users = () => {
           name="name"
           id="outlined-basic"
           onChange={(e) =>
-            setInputValue({ ...inputValue, [e.target.name]: e.target.value })
+            setInputValue({
+              ...inputValue,
+              // id: (UserNames.length + 1).toString(),
+              [e.target.name]: e.target.value,
+            })
           }
           startAdornment={
             <InputAdornment position="start">
