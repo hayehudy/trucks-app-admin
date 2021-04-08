@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import Sidebar from "../sidebar/sidebar";
 import Loads from "../loads/loads";
 import Location from "../location/location";
-import axios from "axios";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Collapse from "@material-ui/core/Collapse";

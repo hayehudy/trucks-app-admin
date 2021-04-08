@@ -1,10 +1,9 @@
 import "./sidebar.css";
 import "date-fns";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
-  KeyboardTimePicker,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
 import { makeStyles } from "@material-ui/core/styles";
