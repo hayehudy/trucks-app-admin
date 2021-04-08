@@ -195,7 +195,6 @@ const Users = () => {
           onChange={(e) =>
             setInputValue({
               ...inputValue,
-              // id: (UserNames.length + 1).toString(),
               [e.target.name]: e.target.value,
             })
           }
