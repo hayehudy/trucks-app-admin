@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./users.css";
-import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -12,9 +11,6 @@ import Paper from "@material-ui/core/Paper";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import FormControl from "@material-ui/core/FormControl";
-import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
 import { AccountCircle } from "@material-ui/icons/";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import LooksOneIcon from "@material-ui/icons/LooksOne";
@@ -32,8 +28,8 @@ const Users = () => {
     { id: "4", name: "Ann", numuser: "444", password: "444" },
   ]);
   const [remove, setRemove] = useState({});
-  const [toAdd, setToAdd] = useState(false);
-  const [open, setOpen] = React.useState(false);
+  // const [toAdd, setToAdd] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleClose = () => {
     setOpen(false);
@@ -120,7 +116,6 @@ const Users = () => {
         className={classes.modal}
         open={open}
         onClose={handleClose}
-        // closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,
@@ -172,7 +167,7 @@ const Users = () => {
   }
 
   function AddUser(props) {
-    let usernames = UserNames;
+    // let usernames = UserNames;
     const [inputValue, setInputValue] = useState({
       id: "",
       name: "",
@@ -180,9 +175,12 @@ const Users = () => {
       password: "",
     });
 
-    const adduser = async () => {
-      usernames.push({ ...inputValue, id: (UserNames.length + 1).toString() });
-      await setUserNames(usernames);
+    const adduser = () => {
+      for (var i = 0; i < UserNames.length; i++) {
+        var max = Math.max(UserNames[i].id);
+      }
+      // usernames.push({ ...inputValue, id: (max + 1).toString() });
+      setUserNames(userNames=>[...userNames,{ ...inputValue, id: (max + 1).toString() }]);
       console.log(UserNames);
     };
 

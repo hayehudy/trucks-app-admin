@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import "./selectDetails.css";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import { grey } from "@material-ui/core/colors";
+import { PersonPin } from "@material-ui/icons";
 const useStyles = makeStyles((theme) => ({
   formControl: {
     marginRight: "40%",
@@ -42,7 +43,11 @@ const Selected = (props) => {
     setNoChoose(false);
     // setPersonName(event.target.value);
     setRemoved(false);
-    setPersonName(names => [...names,event.target.value ]);
+    if (personName.indexOf(event.target.value)<0)
+    {setPersonName(names => [...names,event.target.value ])}
+    else{
+    let theNames=personName.filter((e)=>e!==event.target.value);
+    setPersonName(theNames)}
     // let theNames = personName;
     // theNames.push(event.target.value);
     // setPersonName(theNames);

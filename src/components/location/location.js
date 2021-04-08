@@ -10,7 +10,6 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const Location = () => {
   const [pointsmap, setPointsmap] = useState([]);
-  const [pointsselect, setPointsselect] = useState([]);
   const [aaa, setaaa] = useState("");
 
   const points = [
@@ -49,9 +48,9 @@ const Location = () => {
       <div>{icon}</div>
     </div>
   );
-  {
-    console.log(pointsmap.lat);
-  }
+  // {
+  //   console.log(pointsmap.lat);
+  // }
   return (
     <div className="location">
       <h2>Location</h2>
@@ -93,7 +92,7 @@ const Location = () => {
               <AnyReactComponent
                 lat={point.lat}
                 lng={point.lng}
-                icon={<img className="imgmarker" src={marker} />}
+                icon={<img className="imgmarker" src={marker} alt="" />}
                 text={point.time}
               />
             ))
@@ -101,7 +100,7 @@ const Location = () => {
             <AnyReactComponent
               lat={pointsmap.lat}
               lng={pointsmap.lng}
-              icon={<img className="imgmarker" src={marker} />}
+              icon={<img className="imgmarker" src={marker} alt="" />}
               text={pointsmap.time}
             />
           )}

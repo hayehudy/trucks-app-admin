@@ -1,6 +1,5 @@
 import "./loads.css";
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -51,7 +50,7 @@ function Loads(props) {
                 setLoadsticket(Ticket);
               }}
             >
-              <img src={Ticket} className="imgticket" />
+              <img src={Ticket} className="imgticket" alt="" />
             </Button>
             <Dialog
               open={open}
@@ -63,7 +62,7 @@ function Loads(props) {
                 cancel
               </Button>
               <DialogContent>
-                <img src={loadsticket}></img>
+                <img src={loadsticket} alt=""></img>
               </DialogContent>
             </Dialog>
           </td>
