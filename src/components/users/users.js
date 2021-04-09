@@ -44,6 +44,7 @@ const Users = () => {
     },
     margin: {
       margin: theme.spacing(5),
+      // width: "100%",
     },
     modal: {
       display: "flex",
@@ -55,6 +56,11 @@ const Users = () => {
       border: "2px solid #000",
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
+    },
+    btn: {
+      width: "30%",
+      margin: theme.spacing(2),
+      marginLeft: 30,
     },
   }));
 
@@ -127,18 +133,25 @@ const Users = () => {
             <p id="transition-modal-description">
               Are you sure you want to delete the user {remove.name}?
             </p>
-            <Button
-              variant="contained"
-              onClick={() => {
-                setUserNames(UserNames.filter((e) => remove.id !== e.id));
-                handleClose();
-              }}
-            >
-              Yes{" "}
-            </Button>
-            <Button variant="contained" onClick={handleClose}>
-              cancel{" "}
-            </Button>
+            <div className="btnmodal">
+              <Button
+                className={classes.btn}
+                variant="contained"
+                onClick={() => {
+                  setUserNames(UserNames.filter((e) => remove.id !== e.id));
+                  handleClose();
+                }}
+              >
+                Yes{" "}
+              </Button>
+              <Button
+                variant="contained"
+                className={classes.btn}
+                onClick={handleClose}
+              >
+                cancel{" "}
+              </Button>
+            </div>
           </div>
         </Fade>
       </Modal>
@@ -190,54 +203,67 @@ const Users = () => {
     return (
       <div className={classes.margin}>
         <div className="divadduser">
-        <div className="divinput">
-        <InputLabel htmlFor="input-with-icon-adornment">Name</InputLabel>
-        <Input
-          name="name"
-          id="input-with-icon-adornment"
-          onChange={(e) =>
-            setInputValue({
-              ...inputValue,
-              [e.target.name]: e.target.value,
-            })
-          }
-          startAdornment={
-            <InputAdornment position="start">
-              <AccountCircle />
-            </InputAdornment>
-          }
-        /></div>
-        <div className="divinput">
-        <InputLabel htmlFor="input-with-icon-adornment">User number</InputLabel>
-        <Input
-          name="numuser"
-          onChange={(e) =>
-            setInputValue({ ...inputValue, [e.target.name]: e.target.value })
-          }
-          id="input-with-icon-adornment"
-          startAdornment={
-            <InputAdornment position="start">
-              <LooksOneIcon />
-            </InputAdornment>
-          }
-        /></div>
-        <div className="divinput">
-        <InputLabel htmlFor="input-with-icon-adornment">Password</InputLabel>
-        <Input
-          id="input-with-icon-adornment"
-          name="password"
-          onChange={(e) =>
-            setInputValue({ ...inputValue, [e.target.name]: e.target.value })
-          }
-          startAdornment={
-            <InputAdornment position="start">
-              <VpnKeyIcon />
-            </InputAdornment>
-          }
-        /></div>
-        <Button className="btnadduser" variant="contained" onClick={adduser}>
-          Add User
-        </Button>
+          <div className="divinput">
+            <InputLabel htmlFor="input-with-icon-adornment">Name</InputLabel>
+            <Input
+              name="name"
+              id="input-with-icon-adornment"
+              onChange={(e) =>
+                setInputValue({
+                  ...inputValue,
+                  [e.target.name]: e.target.value,
+                })
+              }
+              startAdornment={
+                <InputAdornment position="start">
+                  <AccountCircle />
+                </InputAdornment>
+              }
+            />
+          </div>
+          <div className="divinput">
+            <InputLabel htmlFor="input-with-icon-adornment">
+              User number
+            </InputLabel>
+            <Input
+              name="numuser"
+              onChange={(e) =>
+                setInputValue({
+                  ...inputValue,
+                  [e.target.name]: e.target.value,
+                })
+              }
+              id="input-with-icon-adornment"
+              startAdornment={
+                <InputAdornment position="start">
+                  <LooksOneIcon />
+                </InputAdornment>
+              }
+            />
+          </div>
+          <div className="divinput">
+            <InputLabel htmlFor="input-with-icon-adornment">
+              Password
+            </InputLabel>
+            <Input
+              id="input-with-icon-adornment"
+              name="password"
+              onChange={(e) =>
+                setInputValue({
+                  ...inputValue,
+                  [e.target.name]: e.target.value,
+                })
+              }
+              startAdornment={
+                <InputAdornment position="start">
+                  <VpnKeyIcon />
+                </InputAdornment>
+              }
+            />
+          </div>
+          <Button className="btnadduser" variant="contained" onClick={adduser}>
+            Add User
+          </Button>
         </div>
       </div>
     );
@@ -247,22 +273,22 @@ const Users = () => {
     <div className="users">
       <h1>Users</h1>
       <div className="divtable">
-      <TableContainer component={Paper} className={classes.container}>
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-            <StyledTableHeader>{renderTableHeader()}</StyledTableHeader>
-          </TableHead>
+        <TableContainer component={Paper} className={classes.container}>
+          <Table stickyHeader aria-label="sticky table">
+            <TableHead>
+              <StyledTableHeader>{renderTableHeader()}</StyledTableHeader>
+            </TableHead>
 
-          <TableBody>
-            {UserNames.map((user) => (
-              <RenderTableData key={user.id} user={user}></RenderTableData>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            <TableBody>
+              {UserNames.map((user) => (
+                <RenderTableData key={user.id} user={user}></RenderTableData>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </div>
       <div className="divsidebar">
-      <AddUser />
+        <AddUser />
       </div>
       <Themodal />
     </div>

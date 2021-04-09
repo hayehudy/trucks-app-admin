@@ -10,7 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const Location = () => {
   const [pointsmap, setPointsmap] = useState([]);
-  const [aaa, setaaa] = useState("");
+  const [selectlocation, setSelectlocation] = useState("");
 
   const points = [
     { lat: 31.8800332, lng: 35.2398698, time: "10:00" },
@@ -23,7 +23,6 @@ const Location = () => {
 
   useEffect(() => {
     setPointsmap(points);
-    // setPointsselect(points);
   }, []);
 
   const useStyles = makeStyles((theme) => ({
@@ -39,7 +38,6 @@ const Location = () => {
 
   const handleChange = (event) => {
     setPointsmap(event.target.value);
-    setaaa(event.target.value);
   };
 
   const AnyReactComponent = ({ icon, text }) => (
@@ -61,10 +59,13 @@ const Location = () => {
           <Select
             labelId="demo-simple-select-label"
             id="select"
-            value={pointsmap}
+            value={selectlocation}
             onChange={handleChange}
             displayEmpty
           >
+            <MenuItem value={selectlocation} color="#ccc">
+              Select a location to view
+            </MenuItem>
             <MenuItem value={points}>View all locations</MenuItem>
             {points.map((point) => (
               <MenuItem
