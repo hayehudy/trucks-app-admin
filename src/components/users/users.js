@@ -40,10 +40,10 @@ const Users = () => {
       width: "100%",
     },
     container: {
-      maxHeight: 600,
+      maxHeight: 360,
     },
     margin: {
-      margin: theme.spacing(1),
+      margin: theme.spacing(5),
     },
     modal: {
       display: "flex",
@@ -189,10 +189,12 @@ const Users = () => {
 
     return (
       <div className={classes.margin}>
+        <div className="divadduser">
+        <div className="divinput">
         <InputLabel htmlFor="input-with-icon-adornment">Name</InputLabel>
         <Input
           name="name"
-          id="outlined-basic"
+          id="input-with-icon-adornment"
           onChange={(e) =>
             setInputValue({
               ...inputValue,
@@ -204,7 +206,8 @@ const Users = () => {
               <AccountCircle />
             </InputAdornment>
           }
-        />
+        /></div>
+        <div className="divinput">
         <InputLabel htmlFor="input-with-icon-adornment">User number</InputLabel>
         <Input
           name="numuser"
@@ -217,7 +220,8 @@ const Users = () => {
               <LooksOneIcon />
             </InputAdornment>
           }
-        />
+        /></div>
+        <div className="divinput">
         <InputLabel htmlFor="input-with-icon-adornment">Password</InputLabel>
         <Input
           id="input-with-icon-adornment"
@@ -230,10 +234,11 @@ const Users = () => {
               <VpnKeyIcon />
             </InputAdornment>
           }
-        />
-        <Button variant="contained" onClick={adduser}>
+        /></div>
+        <Button className="btnadduser" variant="contained" onClick={adduser}>
           Add User
         </Button>
+        </div>
       </div>
     );
   }
@@ -241,6 +246,7 @@ const Users = () => {
   return (
     <div className="users">
       <h1>Users</h1>
+      <div className="divtable">
       <TableContainer component={Paper} className={classes.container}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -254,7 +260,10 @@ const Users = () => {
           </TableBody>
         </Table>
       </TableContainer>
+      </div>
+      <div className="divsidebar">
       <AddUser />
+      </div>
       <Themodal />
     </div>
   );

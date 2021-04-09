@@ -1,6 +1,39 @@
 .users {
   margin: 60px auto;
   position: absolute;
+  text-align: center;
+  width: 75%;
+  left: 25%;
+}
+
+.divtable {
+  position:absolute;
+  left: 15%;
+  width: 70%}
+
+.divsidebar {
+  position:fixed;
+  width:25%;
+  height: 100%;
+  left: 0;
+  align-items: center;
+  background-color: rgb(228, 228, 228);
+  z-index: 5;
+  top:60px;
+}
+
+.divadduser {
+  margin: 100px auto;
+}
+
+.divinput{
+  text-align: left;
+  margin: 40px auto 0px;
+  width: 90%;
+}
+
+.btnadduser {
+  margin: 30px auto !important;
 }
 
 .users table,

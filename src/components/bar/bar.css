@@ -4,7 +4,7 @@
   align-items: center;
   position: fixed;
   background-color: rgb(228, 228, 228);
-  z-index: 2;
+  z-index: 10;
 }
 .bar .allURL {
   width: 100%;
