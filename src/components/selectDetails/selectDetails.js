@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import "./selectDetails.css";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import { grey } from "@material-ui/core/colors";
+import { PersonPin } from "@material-ui/icons";
 const useStyles = makeStyles((theme) => ({
   formControl: {
     marginRight: "40%",
@@ -40,15 +41,24 @@ const Selected = (props) => {
 
   const handleChange = (event) => {
     setNoChoose(false);
-    setPersonName((names) => [...names, event.target.value]);
+    // setPersonName((names) => [...names, event.target.value]);
     setRemoved(false);
+    if (personName.indexOf(event.target.value) < 0) {
+      setPersonName((names) => [...names, event.target.value]);
+    } else {
+      let theNames = personName.filter((e) => e !== event.target.value);
+      setPersonName(theNames);
+    }
+    // let theNames = personName;
+    // theNames.push(event.target.value);
+    // setPersonName(theNames);
   };
 
   const add = async () => {
     let theOptions = options;
     let test = theOptions.find((e) => e === inputValue);
     if (!test) {
-      await theOptions.push(inputValue);
+      theOptions.push(inputValue);
       setOptions(theOptions);
       setPersonName([]);
     }
@@ -91,9 +101,8 @@ const Selected = (props) => {
 
       <FormControl className={classes.formControl}>
         {options.map((name, index) => (
-          <MenuItem>
+          <MenuItem key={name.uniqueId}>
             <Checkbox
-              key={index}
               checked={personName.indexOf(name) > -1}
               multiple
               value={name}
