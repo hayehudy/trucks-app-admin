@@ -52,10 +52,3 @@ th {
   text-align: center !important;
   font-weight: 700 !important;
 }
-.users .MuiButton-contained {
-  /* background-color: rgb(124, 124, 124) !important;
-  color: white !important;
-  text-align: center !important;
-  font-weight: 700 !important; */
-  width: 30% !important;
-}

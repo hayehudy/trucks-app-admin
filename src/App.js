@@ -171,7 +171,7 @@ function App() {
             <Home students={students} loads={loads} />
           </Route>
 
-          <Route path="/works/:id">
+          <Route exact path="/works/:id">
             <Bar />
             <Home students={students} loads={loads} />
           </Route>

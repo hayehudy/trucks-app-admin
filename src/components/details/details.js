@@ -26,7 +26,6 @@ const Details = () => {
   ]);
 
   return (
-    // <div className="details" style={{display:"inline-block",width:"100%"}}>
     <div className="details">
       {/* <div className="head">
         <h1>Details</h1>
