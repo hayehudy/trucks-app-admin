@@ -91,7 +91,12 @@ const Users = () => {
     return (
       <React.Fragment>
         <StyledTableRow className={classes.root} component="table" scope="row">
-          <TableCell component="table" scope="row" align="center">
+          <TableCell
+            component="table"
+            scope="row"
+            align="center"
+            style={{ width: "10%" }}
+          >
             <DeleteIcon
               onClick={() => {
                 setOpen(true);
@@ -100,7 +105,12 @@ const Users = () => {
               }}
             />
           </TableCell>
-          <TableCell component="table" scope="row" align="center">
+          <TableCell
+            component="table"
+            scope="row"
+            align="center"
+            style={{ width: "10%" }}
+          >
             <EditIcon
               onClick={() => {
                 setEdit(true);
@@ -109,9 +119,13 @@ const Users = () => {
               }}
             />
           </TableCell>
-          <TableCell align="center">{user.name}</TableCell>
-          <TableCell align="center">{user.numuser}</TableCell>
-          <TableCell align="center">
+          <TableCell align="center" style={{ width: "25%" }}>
+            {user.name}
+          </TableCell>
+          <TableCell align="center" style={{ width: "25%" }}>
+            {user.numuser}
+          </TableCell>
+          <TableCell align="center" style={{ width: "30%" }}>
             <input
               className="inputpassword"
               disabled
