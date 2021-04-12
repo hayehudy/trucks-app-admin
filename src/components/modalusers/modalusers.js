@@ -84,123 +84,125 @@ const Modalusers = (props) => {
         timeout: 500,
       }}
     >
-      <Fade in={open}>
-        {edit ? (
-          <div className={classes.paper}>
-            <h2 id="transition-modal-title">edit</h2>
-            <div className={classes.margin}>
-              <div className="divadduser">
-                <div className="divinput">
-                  <InputLabel htmlFor="input-with-icon-adornment">
-                    Name
-                  </InputLabel>
-                  <Input
-                    type="text"
-                    name="name"
-                    id="input-with-icon-adornment"
-                    defaultValue={remove.name}
-                    onChange={onchange}
-                    startAdornment={
-                      <InputAdornment position="start">
-                        <AccountCircle />
-                      </InputAdornment>
-                    }
-                  />
-                </div>
-                <div className="divinput">
-                  <InputLabel htmlFor="input-with-icon-adornment">
-                    User number
-                  </InputLabel>
-                  <Input
-                    name="numuser"
-                    defaultValue={remove.numuser}
-                    onChange={onchange}
-                    id="input-with-icon-adornment"
-                    startAdornment={
-                      <InputAdornment position="start">
-                        <LooksOneIcon />
-                      </InputAdornment>
-                    }
-                  />
-                </div>
-                <div className="divinput">
-                  <InputLabel htmlFor="input-with-icon-adornment">
-                    Password
-                  </InputLabel>
-                  <Input
-                    id="input-with-icon-adornment"
-                    defaultValue={remove.password}
-                    name="password"
-                    onChange={onchange}
-                    startAdornment={
-                      <InputAdornment position="start">
-                        <VpnKeyIcon />
-                      </InputAdornment>
-                    }
-                  />
+      <div className="modalusers">
+        <Fade in={open}>
+          {edit ? (
+            <div className={classes.paper}>
+              <h2 id="transition-modal-title">Edit User</h2>
+              <div className={classes.margin}>
+                <div className="divadduser">
+                  <div className="divinput">
+                    <InputLabel htmlFor="input-with-icon-adornment">
+                      Name
+                    </InputLabel>
+                    <Input
+                      type="text"
+                      name="name"
+                      id="input-with-icon-adornment"
+                      defaultValue={remove.name}
+                      onChange={onchange}
+                      startAdornment={
+                        <InputAdornment position="start">
+                          <AccountCircle />
+                        </InputAdornment>
+                      }
+                    />
+                  </div>
+                  <div className="divinput">
+                    <InputLabel htmlFor="input-with-icon-adornment">
+                      User number
+                    </InputLabel>
+                    <Input
+                      name="numuser"
+                      defaultValue={remove.numuser}
+                      onChange={onchange}
+                      id="input-with-icon-adornment"
+                      startAdornment={
+                        <InputAdornment position="start">
+                          <LooksOneIcon />
+                        </InputAdornment>
+                      }
+                    />
+                  </div>
+                  <div className="divinput">
+                    <InputLabel htmlFor="input-with-icon-adornment">
+                      Password
+                    </InputLabel>
+                    <Input
+                      id="input-with-icon-adornment"
+                      defaultValue={remove.password}
+                      name="password"
+                      onChange={onchange}
+                      startAdornment={
+                        <InputAdornment position="start">
+                          <VpnKeyIcon />
+                        </InputAdornment>
+                      }
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="btnmodal">
-              <Button
-                className={classes.btn}
-                variant="contained"
-                onClick={() => {
-                  setUserNames(UserNames.filter((e) => remove.id !== e.id));
-                  handleClose();
-                  // const adduser = () => {
-                  for (var i = 0; i < UserNames.length; i++) {
-                    var max = Math.max(UserNames[i].id);
-                  }
-                  // usernames.push({ ...inputValue, id: (max + 1).toString() });
-                  setUserNames((userNames) => [
-                    ...userNames,
-                    { ...inputValue, id: (max + 1).toString() },
-                  ]);
-                  console.log(UserNames);
-                  // };
-                }}
-              >
-                change user{" "}
-              </Button>
-              <Button
-                variant="contained"
-                className={classes.btn}
-                onClick={handleClose}
-              >
-                cancel{" "}
-              </Button>
+              <div className="btnmodal">
+                <Button
+                  className={classes.btn}
+                  variant="contained"
+                  onClick={() => {
+                    setUserNames(UserNames.filter((e) => remove.id !== e.id));
+                    handleClose();
+                    // const adduser = () => {
+                    for (var i = 0; i < UserNames.length; i++) {
+                      var max = Math.max(UserNames[i].id);
+                    }
+                    // usernames.push({ ...inputValue, id: (max + 1).toString() });
+                    setUserNames((userNames) => [
+                      ...userNames,
+                      { ...inputValue, id: (max + 1).toString() },
+                    ]);
+                    console.log(UserNames);
+                    // };
+                  }}
+                >
+                  change user{" "}
+                </Button>
+                <Button
+                  variant="contained"
+                  className={classes.btn}
+                  onClick={handleClose}
+                >
+                  cancel{" "}
+                </Button>
+              </div>
             </div>
-          </div>
-        ) : (
-          <div className={classes.paper}>
-            <h2 id="transition-modal-title">warning</h2>
-            <p id="transition-modal-description">
-              Are you sure you want to delete the user {remove.name}?
-            </p>
-            <div className="btnmodal">
-              <Button
-                className={classes.btn}
-                variant="contained"
-                onClick={() => {
-                  setUserNames(UserNames.filter((e) => remove.id !== e.id));
-                  handleClose();
-                }}
-              >
-                Yes{" "}
-              </Button>
-              <Button
-                variant="contained"
-                className={classes.btn}
-                onClick={handleClose}
-              >
-                cancel{" "}
-              </Button>
+          ) : (
+            <div className={classes.paper}>
+              <h2 id="transition-modal-title">Warning!</h2>
+              <p id="transition-modal-description">
+                Are you sure you want to delete the user {remove.name}?
+              </p>
+              <div className="btnmodal">
+                <Button
+                  className={classes.btn}
+                  variant="contained"
+                  onClick={() => {
+                    setUserNames(UserNames.filter((e) => remove.id !== e.id));
+                    handleClose();
+                  }}
+                >
+                  Yes{" "}
+                </Button>
+                <Button
+                  variant="contained"
+                  className={classes.btn}
+                  onClick={handleClose}
+                >
+                  cancel{" "}
+                </Button>
+              </div>
             </div>
-          </div>
-        )}
-      </Fade>
+          )}
+        </Fade>
+      </div>
     </Modal>
   );
 };

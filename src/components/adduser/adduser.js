@@ -59,51 +59,55 @@ const Users = (props) => {
 
   return (
     <div className={classes.margin}>
-      <div className="divadduser">
-        <div className="divinput">
-          <InputLabel htmlFor="input-with-icon-adornment">Name</InputLabel>
-          <Input
-            name="name"
-            id="input-with-icon-adornment"
-            onChange={onchange}
-            startAdornment={
-              <InputAdornment position="start">
-                <AccountCircle />
-              </InputAdornment>
-            }
-          />
+      <div className="addusers">
+        <div className="divadduser">
+          <div className="divinput">
+            <InputLabel htmlFor="input-with-icon-adornment">Name</InputLabel>
+            <Input
+              name="name"
+              id="input-with-icon-adornment"
+              onChange={onchange}
+              startAdornment={
+                <InputAdornment position="start">
+                  <AccountCircle />
+                </InputAdornment>
+              }
+            />
+          </div>
+          <div className="divinput">
+            <InputLabel htmlFor="input-with-icon-adornment">
+              User number
+            </InputLabel>
+            <Input
+              name="numuser"
+              onChange={onchange}
+              id="input-with-icon-adornment"
+              startAdornment={
+                <InputAdornment position="start">
+                  <LooksOneIcon />
+                </InputAdornment>
+              }
+            />
+          </div>
+          <div className="divinput">
+            <InputLabel htmlFor="input-with-icon-adornment">
+              Password
+            </InputLabel>
+            <Input
+              id="input-with-icon-adornment"
+              name="password"
+              onChange={onchange}
+              startAdornment={
+                <InputAdornment position="start">
+                  <VpnKeyIcon />
+                </InputAdornment>
+              }
+            />
+          </div>
+          <Button className="btnadduser" variant="contained" onClick={adduser}>
+            Add User
+          </Button>
         </div>
-        <div className="divinput">
-          <InputLabel htmlFor="input-with-icon-adornment">
-            User number
-          </InputLabel>
-          <Input
-            name="numuser"
-            onChange={onchange}
-            id="input-with-icon-adornment"
-            startAdornment={
-              <InputAdornment position="start">
-                <LooksOneIcon />
-              </InputAdornment>
-            }
-          />
-        </div>
-        <div className="divinput">
-          <InputLabel htmlFor="input-with-icon-adornment">Password</InputLabel>
-          <Input
-            id="input-with-icon-adornment"
-            name="password"
-            onChange={onchange}
-            startAdornment={
-              <InputAdornment position="start">
-                <VpnKeyIcon />
-              </InputAdornment>
-            }
-          />
-        </div>
-        <Button className="btnadduser" variant="contained" onClick={adduser}>
-          Add User
-        </Button>
       </div>
     </div>
   );

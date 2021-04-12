@@ -14,6 +14,9 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import EditIcon from "@material-ui/icons/Edit";
+import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import { TableSortLabel } from "@material-ui/core";
 
 const Users = () => {
   const [UserNames, setUserNames] = useState([
@@ -25,6 +28,23 @@ const Users = () => {
   const [remove, setRemove] = useState({});
   const [open, setOpen] = useState(false);
   const [edit, setEdit] = useState(false);
+
+  //   const theme = createMuiTheme({
+  //     overrides: {
+  //       MuiTableSortLabel: {
+  //         icon: {
+  //           opacity: "200ms"
+  //         },
+  //       },
+  //     },
+  //   });
+  //   const StyledTableSort = withStyles((theme) => ({
+  //     MuiTableSortLabel: {
+  //       icon: {
+  //         opacity: "200ms"
+  //       },
+  //     },
+  // }))(TableSortLabel);
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -126,27 +146,35 @@ const Users = () => {
             {user.numuser}
           </TableCell>
           <TableCell align="center" style={{ width: "30%" }}>
-            <input
-              className="inputpassword"
-              disabled
-              type={typepassword.map((type) => type.type)}
-              value={user.password}
-            />
-            {[
-              typepassword[0].type === "password" ? (
-                <VisibilityIcon
-                  onClick={() => {
-                    setTypepassword([{ type: "text" }]);
-                  }}
+            <div className="divpassword">
+              <div className="divinputpassword">
+                <input
+                  className="inputpassword"
+                  disabled
+                  type={typepassword.map((type) => type.type)}
+                  value={user.password}
                 />
-              ) : (
-                <VisibilityOffIcon
-                  onClick={() => {
-                    setTypepassword([{ type: "password" }]);
-                  }}
-                />
-              ),
-            ]}
+              </div>
+              <div className="diviconhiden">
+                {[
+                  typepassword[0].type === "password" ? (
+                    <VisibilityIcon
+                      className="iconhiden"
+                      onClick={() => {
+                        setTypepassword([{ type: "text" }]);
+                      }}
+                    />
+                  ) : (
+                    <VisibilityOffIcon
+                      className="iconhiden"
+                      onClick={() => {
+                        setTypepassword([{ type: "password" }]);
+                      }}
+                    />
+                  ),
+                ]}
+              </div>
+            </div>
           </TableCell>
         </StyledTableRow>
       </React.Fragment>
@@ -170,6 +198,9 @@ const Users = () => {
             </TableBody>
           </Table>
         </TableContainer>
+        {/* <ThemeProvider theme={theme}>
+          <Button>font-size: 1rem</Button>
+        </ThemeProvider> */}
       </div>
       <div className="divsidebar">
         <AddUser UserNames={UserNames} setUserNames={setUserNames} />
