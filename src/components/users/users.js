@@ -24,10 +24,10 @@ import VisibilityIcon from "@material-ui/icons/Visibility";
 
 const Users = () => {
   const [UserNames, setUserNames] = useState([
-    { id: "1", name: "Jo", numuser: "111", password: "111" },
-    { id: "2", name: "Bob", numuser: "222", password: "222" },
-    { id: "3", name: "Dan", numuser: "333", password: "333" },
-    { id: "4", name: "Ann", numuser: "444", password: "444" },
+    { id: "1", name: "Jo", numuser: "111", password: "a12" },
+    { id: "2", name: "Bob", numuser: "222", password: "b12" },
+    { id: "3", name: "Dan", numuser: "333", password: "c12" },
+    { id: "4", name: "Ann", numuser: "444", password: "d12" },
   ]);
   const [remove, setRemove] = useState({});
   const [open, setOpen] = useState(false);
