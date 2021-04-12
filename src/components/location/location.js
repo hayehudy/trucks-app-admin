@@ -46,9 +46,15 @@ const Location = () => {
       <div>{icon}</div>
     </div>
   );
-  // {
-  //   console.log(pointsmap.lat);
-  // }
+  // const adduser = () => {
+  for (var i = 0; i < points.length; i++) {
+    var aa = points[i].lat;
+    var bb = points[i].lng;
+    // console.log(aa, bb);
+  }
+  // };
+
+  // adduser();
   return (
     <div className="location">
       <h2>Location</h2>
@@ -85,6 +91,7 @@ const Location = () => {
             key: "AIzaSyDruzVgnPzX3hODNpHFohGBhvj-KO-nFQk",
             language: "en",
           }}
+          // center={{ lat: aa, lng: bb }}
           center={pointsmap.length > 1 ? pointsmap[0] : pointsmap}
           defaultZoom={17}
         >
