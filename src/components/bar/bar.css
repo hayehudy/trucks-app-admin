@@ -10,7 +10,7 @@
   width: 100%;
   margin: 0px auto;
   display: grid;
-  grid-template-columns: 260px 20% 20% 20% 20%;
+  grid-template-columns: 25% 20% 20% 20% 15%;
 }
 
 .bar a {
@@ -53,5 +53,5 @@
 
 .imglogo {
   width: 150px;
-  margin: 10px auto;
+  margin: 10px 50px;
 }

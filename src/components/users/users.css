@@ -52,3 +52,11 @@ th {
   text-align: center !important;
   font-weight: 700 !important;
 }
+
+.inputpassword {
+  background-color: transparent;
+  border: none;
+  color: black;
+  width: 20%;
+  padding: 0px;
+}

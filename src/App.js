@@ -23,7 +23,7 @@ function App() {
       WorksHours: 8,
       Loads: 7,
       Weight: 100,
-      Locations: "",
+      Locations: "6",
     },
     {
       ID: 1230405210915,
@@ -39,7 +39,7 @@ function App() {
       WorksHours: 8,
       Loads: 7,
       Weight: 100,
-      Locations: "",
+      Locations: "7",
     },
     {
       ID: 2220405210915,
@@ -55,7 +55,7 @@ function App() {
       WorksHours: 8,
       Loads: 7,
       Weight: 100,
-      Locations: "",
+      Locations: "5",
     },
     {
       ID: 3330405210915,
@@ -71,7 +71,7 @@ function App() {
       WorksHours: 8,
       Loads: 7,
       Weight: 100,
-      Locations: "",
+      Locations: "22",
     },
     {
       ID: 4440405210915,
@@ -87,7 +87,7 @@ function App() {
       WorksHours: 8,
       Loads: 7,
       Weight: 100,
-      Locations: "",
+      Locations: "33",
     },
     {
       ID: 5550405210915,
@@ -103,7 +103,7 @@ function App() {
       WorksHours: 8,
       Loads: 7,
       Weight: 100,
-      Locations: "",
+      Locations: "22",
     },
   ];
 

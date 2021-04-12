@@ -19,6 +19,8 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
+import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
+import VisibilityIcon from "@material-ui/icons/Visibility";
 
 const Users = () => {
   const [UserNames, setUserNames] = useState([
@@ -28,7 +30,6 @@ const Users = () => {
     { id: "4", name: "Ann", numuser: "444", password: "444" },
   ]);
   const [remove, setRemove] = useState({});
-  // const [toAdd, setToAdd] = useState(false);
   const [open, setOpen] = useState(false);
 
   const handleClose = () => {
@@ -160,6 +161,8 @@ const Users = () => {
   function RenderTableData(props) {
     const { user } = props;
     const classes = useRowStyles();
+    const [typepassword, setTypepassword] = useState([{ type: "password" }]);
+
     return (
       <React.Fragment>
         <StyledTableRow className={classes.root} component="table" scope="row">
@@ -173,7 +176,29 @@ const Users = () => {
           </TableCell>
           <TableCell align="center">{user.name}</TableCell>
           <TableCell align="center">{user.numuser}</TableCell>
-          <TableCell align="center">{user.password}</TableCell>
+          <TableCell align="center">
+            <input
+              className="inputpassword"
+              disabled
+              type={typepassword.map((type) => type.type)}
+              value={user.password}
+            />
+            {[
+              typepassword[0].type === "password" ? (
+                <VisibilityIcon
+                  onClick={() => {
+                    setTypepassword([{ type: "text" }]);
+                  }}
+                />
+              ) : (
+                <VisibilityOffIcon
+                  onClick={() => {
+                    setTypepassword([{ type: "password" }]);
+                  }}
+                />
+              ),
+            ]}
+          </TableCell>
         </StyledTableRow>
       </React.Fragment>
     );

@@ -131,6 +131,14 @@ function Home(props) {
       <React.Fragment>
         <StyledTableRow className={classes.root} component="table" scope="row">
           <TableCell component="table" scope="row" align="center">
+            <IconButton
+              aria-label="expand row"
+              size="small"
+              onClick={() => setOpenload(!openload)}
+            >
+              {openload ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+            </IconButton>{" "}
+            {"    "}
             {row.ID}
           </TableCell>
           <TableCell align="center">{row.Driver}</TableCell>
@@ -143,55 +151,25 @@ function Home(props) {
           <TableCell align="center">{row.StartTime}</TableCell>
           <TableCell align="center">{row.EndTime}</TableCell>
           <TableCell align="center">{row.WorksHours}</TableCell>
-          <TableCell align="center">
-            <IconButton
-              aria-label="expand row"
-              size="small"
-              onClick={() => setOpenload(!openload)}
-            >
-              {openload ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-            </IconButton>{" "}
-            {"    "}
-            {row.Loads}
-          </TableCell>
+          <TableCell align="center">{row.Loads}</TableCell>
           <TableCell align="center">{row.Weight}</TableCell>
 
-          <TableCell align="center">
-            {" "}
-            <IconButton
-              aria-label="expand row"
-              size="small"
-              onClick={() => {
-                setOpenlocation(!openlocation);
-              }}
-            >
-              {openlocation ? (
-                <KeyboardArrowUpIcon />
-              ) : (
-                <KeyboardArrowDownIcon />
-              )}
-            </IconButton>{" "}
-            {"    "}
-            {row.Locations}
-          </TableCell>
+          <TableCell align="center">{row.Locations}</TableCell>
         </StyledTableRow>
 
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={7}>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={14}>
           <Collapse in={openload} timeout="auto" unmountOnExit>
             <Box margin={2}>
               <Typography gutterBottom component="div">
-                <h2>LOADS</h2>
-                <Loads loads={loads} />
-              </Typography>
-            </Box>
-          </Collapse>
-        </TableCell>
-
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={7}>
-          <Collapse in={openlocation} timeout="auto" unmountOnExit>
-            <Box margin={0}>
-              <Typography gutterBottom component="div">
-                <Location />
+                <div className="divopentable">
+                  <div className="divopenload">
+                    <h2>LOADS</h2>
+                    <Loads loads={loads} />
+                  </div>
+                  <div className="divopenlocation">
+                    <Location />
+                  </div>
+                </div>
               </Typography>
             </Box>
           </Collapse>

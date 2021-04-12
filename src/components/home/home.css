@@ -20,8 +20,16 @@ th {
   font-weight: 700 !important;
 }
 
-/* .divtable {
-  position: sticky;
-  top: 100;
-
-} */
+.divopentable {
+  display: flex;
+  width: 100%;
+}
+.divopenload {
+  /* position: absolute; */
+  width: 40%;
+}
+.divopenlocation {
+  height: auto;
+  width: 60%;
+  padding-left: 90px;
+}
